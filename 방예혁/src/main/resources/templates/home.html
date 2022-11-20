@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>네이버</title>
+
+  <style>
+    body {
+      margin: 0px;
+      padding: 10px;
+    }
+
+    .header h1 {
+      color: #19ce60;
+    }
+
+    #search {
+      display: inline-block;
+      position: relative;
+      border: 2px solid #19ce60;
+    }
+
+    #search input {
+      display: inline-block;
+      border: 0px;
+      width: 330px;
+      height: 24px;
+      padding: 13px 15px;
+      padding-right: 70px;
+      margin: 1px;
+      background-color: #fff;
+      font-size: 18px;
+      line-height: 24px;
+      color: #000;
+      font-weight: 700;
+      outline: none;
+    }
+
+    #search button {
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 54px;
+      border: 0px;
+      color: white;
+      background-color: #19ce60;
+      cursor: pointer;
+    }
+
+    #user_box {
+      width: 417px;
+      margin-top: 20px;
+      background-color: #f7f9fa;
+      border: 1px solid #dae1e6;
+    }
+
+    #user {
+      position: relative;
+      padding: 16px;
+    }
+
+    #user span {
+      padding-left: 3px;
+      color: grey;
+      font-size: 13px;
+    }
+
+    #signin_btn {
+      display: block;
+      padding: 15px 0;
+      margin-top: 11px;
+      background-color: #19ce60;
+      border: 1px solid #15c654;
+      -webkit-border-radius: 2px;
+      border-radius: 2px;
+      color: #fff;
+      font-weight: 900;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    #user_sub {
+      margin: 14px 8px 0 4px;
+    }
+
+    #signup_btn {
+      font-size: 13px;
+      color: #505050;
+      text-decoration: none;
+    }
+
+    #premium_btn {
+      font-size: 13px;
+      color: #505050;
+      text-decoration: none;
+    }
+
+    #signout_btn {
+      position: absolute;
+      top: 17px;
+      right: 17px;
+      padding: 6px 10px 6px 11px;
+      background-color: #ccd0d4;
+      border-radius: 14px;
+      font-size: 11px;
+      color: #fff;
+      border: 0px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1 th:if="${session.sessionPremium == null || session.sessionPremium == false}">NAVER</h1>
+  <h1 th:if="${session.sessionPremium}" th:text="|NAVER Premium|"></h1>
+</div>
+<div class="main">
+  <div id="search">
+    <form>
+      <input type="text" name="query" required />
+      <button type="submit">검색</button>
+    </form>
+  </div>
+
+  <div id="user_box">
+    <div id="user">
+      <span th:if="${session.sessionUsername == null}">네이버를 더 안전하고 편리하게 이용하세요</span>
+      <span style="color: black; font-weight: bold" th:if="${session.sessionUsername != null}" th:text="|${session.sessionUsername}님|"></span><br />
+      <span th:if="${session.sessionUsername != null}" th:text="|${session.sessionUsername}@naver.com|"></span>
+      <a href="signin" id="signin_btn" th:if="${session.sessionUsername == null}">NAVER 로그인</a>
+      <form action="signout" method="post">
+        <button type="submit" id="signout_btn" th:if="${session.sessionUsername != null}">로그아웃</button>
+      </form>
+      <div id="user_sub">
+        <a href="signup" id="signup_btn" th:if="${session.sessionUsername == null}">회원가입</a>
+        <a style="color: black; font-weight: bold" href="forPremiumMembers" id="premium_btn" th:if="${session.sessionPremium}">Premium 전용 페이지</a>
+        <a style="color: black; font-weight: bold; text-decoration: none" href="joinPremium" id="premium_join_btn" th:if="${session.sessionPremium == false}">Premium 가입하기</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<hr>
+<h2>회원 목록</h2>
+<div th:each="member : ${members}">
+  <strong th:text="${member.username}">이름</strong>
+  <strong th:text="${member.premium}">구독여부</strong>
+  <strong th:text="${member.password}">암호화된 비밀번호</strong>
+</div>
+
+
+
+
+</body>
+</html>
