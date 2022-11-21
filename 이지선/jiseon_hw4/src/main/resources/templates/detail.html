@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+  <title>게시글 상세</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+  <!-- Main -->
+  <div id="main">
+    <div class="inner">
+
+      <!-- Header -->
+      <header id="header">
+        <a href="/" class="logo"><strong>Design</strong> by HTML5 UP</a>
+      </header>
+
+      <!-- Content -->
+      <section>
+        <header class="main">
+          <h1>Detail</h1>
+        </header>
+
+        <article th:each="post : ${posts}">
+          <hr class="major"/>
+
+          <h2 th:text="${post.postname}">a</h2>
+          <p th:text="${post.contents}">D</p>
+
+          <ul class="actions">
+            <li><a th:href="@{/deletepost(postname=${post.postname})}" class="button">삭제</a></li>
+          </ul>
+        </article>
+      </section>
+
+    </div>
+  </div>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>
