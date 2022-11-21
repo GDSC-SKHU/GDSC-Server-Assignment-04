@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="UTF-8">
+  <title>회원가입</title>
+</head>
+<body>
+  <h2> 로그인 </h2>
+  <form action="" method="post" enctype="application/x-www-form-urlencoded">
+    <div>
+      <label>ID</label>
+      <input type="text" th:field="${member.memberId}">
+    </div>
+   <div>
+     <label>PWD</label>
+     <input type="password" th:field="${member.memberPassword}">
+   </div>
+        <button type="submit" >로그인</button>
+      <button onClick="location.href='/login/signin.html'" th:onclick="|location.href='@{/login/signin}'|" type="button">회원가입</button>
+
+  </form>
+</body>
+</html>
