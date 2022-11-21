@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+    <h1>게시판</h1>
+</head>
+<body>
+
+<hr>
+<h2 th:th:text="|안녕하세요 ${session.sessionUsername}님|"></h2>
+
+<h2>글 목록</h2>
+<div th:each="text : ${texts}">
+    <strong th:text="${text.title}">제목</strong>
+    <strong th:text="${text.mainText}">본문</strong>
+</div>
+
+<a href="write">글쓰기</a>
+
+</br>
+<a href="/">로그인창</a>
+
+
+
+
+</body>
+</html>
