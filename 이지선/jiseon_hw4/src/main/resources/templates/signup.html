@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <a href="/" class="logo"><strong>Design</strong> by HTML5 UP</a>
+            </header>
+
+            <!-- Content -->
+            <section>
+                <header class="main">
+                    <h1>Sign Up</h1>
+                </header>
+
+                <hr class="major" />
+                <h3>❤</h3>
+                <form action="signup" method="post" enctype="application/x-www-form-urlencoded">
+                    <div class="row gtr-uniform">
+                        <div class="col-12">
+                            <input type="text" th:field="${member.username}" placeholder="Username">
+                            <strong th:if= "${#fields.hasErrors('${member.username}')}"  th:errors="${member.username}" style="color: red">
+                                error</strong>
+                        </div>
+                        <div class="col-12">
+                            <input type="password" id="password" name="password" th:value="${member.password}" placeholder="Password">
+                            <strong th:if= "${#fields.hasErrors('${member.password}')}"  th:errors="${member.password}" style="color: red">
+                                error</strong>
+                        </div>
+                    </div>
+                    </br>
+                    <div class="col-12">
+                        <ul class="actions">
+                            <li><input type="submit" value="Sign Up" class="primary" /></li>
+                            <li><input type="reset" value="Reset" /></li>
+                        </ul>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>

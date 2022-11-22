@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>글 작성</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+  <!-- Main -->
+  <div id="main">
+    <div class="inner">
+
+      <!-- Header -->
+      <header id="header">
+        <a href="/" class="logo"><strong>Design</strong> by HTML5 UP</a>
+      </header>
+
+      <!-- Content -->
+      <section>
+        <header class="main">
+          <h1>Writing</h1>
+        </header>
+
+        <hr class="major" />
+        <h3>❤</h3>
+        <form action="post" method="post">
+          <div class="row gtr-uniform">
+            <div class="col-12">
+              <input type="text" th:field="${post.postname}" placeholder="제목" />
+            </div>
+            <div class="col-12">
+              <textarea th:field="${post.contents}" name="demo-message" id="demo-message" placeholder="내용을 입력해주세요." rows="6"></textarea>
+            </div>
+          </div>
+          </br>
+          <div class="col-12">
+            <ul class="actions">
+              <li><input type="submit" value="작성" class="primary" /></li>
+              <li><input type="reset" value="지우기" /></li>
+            </ul>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+</body>
+</html>

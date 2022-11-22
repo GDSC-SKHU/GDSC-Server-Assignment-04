@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <a href="/" class="logo"><strong>Design</strong> by HTML5 UP</a>
+            </header>
+
+            <!-- Content -->
+            <section>
+                <header class="main">
+                    <h1>Login</h1>
+                </header>
+
+                <hr class="major" />
+                <h3>❤</h3>
+                <form action="signin" method="post" enctype="application/x-www-form-urlencoded">
+                    <div class="row gtr-uniform">
+                        <div class="col-12">
+                            <input type="text" placeholder="Username" th:field ="${member.username}"/>
+                        </div>
+                        <div class="col-12">
+                            <input type="password" id="password" name="password" th:value="${member.password}" placeholder="Password" />
+                        </div>
+                    </div>
+                    </br>
+                    <div class="col-12">
+                        <ul class="actions">
+                            <li><input type="submit" value="Login" class="primary" /></li>
+                            <li><input type="reset" value="Reset" /></li>
+                        </ul>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>
