@@ -11,6 +11,7 @@ public class TextRepository {
 
     // DB
     public static Map<String, Text> textMap = new HashMap<>();
+    public static Map<String, SubText> subTextMap = new HashMap<>();
 
     // Member 저장
     public void save(Text text){
@@ -23,10 +24,13 @@ public class TextRepository {
         return new ArrayList<>(values1);
     }
 
-
-
-    //제목으로 찾기
-    public List<Text> findByTitle(String title){
-        return List.of(textMap.get(title));
+    public void save2 (SubText subText){
+        subTextMap.put(subText.getMyToday(),subText);
     }
+    public List<SubText> findAll2(){
+        Collection<SubText> values2 = subTextMap.values();
+        return new ArrayList<>(values2);
+    }
+
+
 }

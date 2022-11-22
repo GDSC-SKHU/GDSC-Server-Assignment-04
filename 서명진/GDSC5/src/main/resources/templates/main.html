@@ -8,13 +8,25 @@
 <body>
 
 <hr>
-<h2 th:th:text="|안녕하세요 ${session.sessionUsername}님|"></h2>
+<h2 th:th:text="| ${session.sessionUsername} +'님 안녕하세요'|"></h2>
+
+
+<form method="post" action="main">
+<input type="text" name="myToday" placeholder="현재 기분"/>
+<button type="submit">등록</button>
+
+</form>
+<h2>오늘의 기분</h2>
+<div th:each="subText : ${subTexts}">
+    <strong th:text="${subText.myToday}"></strong>
+</div>
 
 <h2>글 목록</h2>
 <div th:each="text : ${texts}">
     <strong th:text="${text.title}">제목</strong>
     <strong th:text="${text.mainText}">본문</strong>
 </div>
+
 
 <a href="write">글쓰기</a>
 

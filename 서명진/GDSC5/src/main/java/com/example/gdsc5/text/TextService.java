@@ -15,6 +15,7 @@ public class TextService {
 
     private final TextRepository textRepository;
 
+
     public void save1(Text text ){
         textRepository.save(text);
     }
@@ -24,9 +25,12 @@ public class TextService {
         return textRepository.findAll1();
     }
 
-    // 이름으로 단건 조회
-    public List<Text> findByTitle(String title){
-        return textRepository.findByTitle(title);
+    public void save2(SubText subText){
+        textRepository.save2(subText);
+    }
+
+    public List<SubText> findAll2(){
+        return textRepository.findAll2();
     }
 
 }
