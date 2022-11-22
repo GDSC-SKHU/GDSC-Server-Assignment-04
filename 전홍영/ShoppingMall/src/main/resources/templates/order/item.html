@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상품</title>
+</head>
+<body>
+  <h2> 상품 구매 성공!</h2>
+  <div>
+    <label> 상품 ID</label>
+    <input type="text" id="itemId" name="itemId" value="1" th:value="${item.itemId}" readonly>
+  </div>
+  <div>
+    <label> 상품 이름</label>
+    <input type="text" id="itemName" name="itemName" value="상품명" th:value="${item.itemName}" readonly>
+  </div>
+  <div>
+    <label> 상품 가격</label>
+    <input type="text" id="price" name="price" value="100" th:value="${item.price}" readonly>
+  </div>
+  <div>
+    <label> 상품 수량</label>
+    <input type="text" id="quantity" name="quantity" value="1" th:value="${item.quantity}" readonly>
+  </div>
+  <button onClick="location.href='/items.html'" th:onclick="|location.href='@{/items}'|" type="button">목록으로</button>
+</body>
+</html>

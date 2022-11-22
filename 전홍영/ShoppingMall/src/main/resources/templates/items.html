@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid #444444;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #444444;
+            padding: 10px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- th:if는 조건이 false일 경우 태그 자체가 무시됨 -->
+    <h2 th:if="${session.member==null}">Guest</h2>
+    <h2 th:if="${session.member !=null}" th:text="|${session.member.getMemberName()}님 쇼핑목록|"></h2>
+    <h1>목록</h1>
+<button onclick="location.href='items/addItem.html'" th:onclick="|location.href='@{/items/addItem}'|">상품 등록</button>
+  <div>
+      <table class="table" border="1">
+          <thead>
+          <tr>
+              <th>ID</th>
+              <th>상품명</th>
+              <th>가격</th>
+              <th>수량</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="item : ${items}">
+              <td><a href="item.html" th:href="@{/items/{itemId}(itemId=${item.itemId})}" th:text="${item.itemId}">상품 id</a></td>
+              <td><a href="item.html" th:href="@{|/items/${item.itemId}|}" th:text="${item.itemName}">상품명</a></td>
+              <td th:text="${item.price}">10000</td>
+              <td th:text="${item.quantity}">10</td>
+          </tr>
+          </tbody>
+      </table>
+
+      <form action="signout" method="post">
+          <button ><a href="/logout">로그아웃</a></button>
+      </form>
+  </div>
+</body>
+</html>
