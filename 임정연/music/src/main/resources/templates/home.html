@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>음악</title>
+    <h1>Spotify</h1>
+</head>
+<body>
+<a href="addMusic">플레이리스트에 음악 추가</a>
+<br>
+<a href="search">음악  검색하기</a>
+
+<hr>
+<h2>노래 목록</h2>
+<div th:each="music : ${musics}">
+    <strong th:text="${music.title}">제목</strong>
+    <strong th:text="${music.singer}">가수</strong>
+</div>
+
+
+</body>
+</html>
