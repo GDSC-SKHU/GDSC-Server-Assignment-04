@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>home</title>
+  <h1></h1>
+</head>
+<body>
+<h2 th:if="${session.sessionUsername==null}">HELLO!</h2>
+<!--<h2 th:if="${session.sessionUsername !=null}" th:text="|${session.sessionUsername} 안녕|"></h2>-->
+<a href="signin">로그인</a>
+<a href="signup">회원가입</a>
+<br>
+</form>
+<br>
+</body>
+</html>
