@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>음악 검색하기</title>
+</head>
+<body>
+<h2>노래 검색</h2>
+<form action="search.html" th:action method="post">
+    <div>
+        <label for="title">제목</label>
+        <input type="text" id="title" name="title" placeholder="제목을 입력하세요"> </div>
+    <div>
+        <label for="singer">가수</label>
+        <input type="text" id="singer" name="singer" placeholder="가수명을 입력하세요">
+    </div>
+    <div><button type="submit">음악 검색</button> </div>
+<div th:each="music : ${music}">
+    <strong th:text="${music.title}">제목</strong>
+    <strong th:text="${music.singer}">가수명</strong>
+    <button onclick="location.href='search.html'"
+            th:onclick="|location.href='@{/search/delete/{title}(title=${music.title})}'|" type="button">삭제</button>
+</div>
+</body>
+<!--</form>>-->
+</html>
