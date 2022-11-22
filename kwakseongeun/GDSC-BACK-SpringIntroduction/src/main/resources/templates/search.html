@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>강의목록</title>
+</head>
+<body>
+<h2>강의목록</h2>
+<div th:each="sugang : ${sugangs}">
+    <strong th:text="${sugang.sugangname}">강의명</strong>
+    <strong th:text="${sugang.sugangprofessor}">교수명</strong>
+    <strong th:text="${sugang.sugangtime}">강의시간</strong>
+    <button onclick="location.href='search.html'"
+            th:onclick="|location.href='@{/search/delete/{sugangname}(sugangname=${sugang.sugangname})}'|" type="button">강의 삭제</button>
+</div>
+<a href="/">홈</a>
+</body>
+<!--</form>>-->
+</html>

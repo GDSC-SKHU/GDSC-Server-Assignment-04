@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>강의관리시스템</title>
+</head>
+<body>
+
+<form action="addsugang" method="post" enctype="application/x-www-form-urlencoded">
+
+    <label>강의명</label>
+    <input type="text" th:field ="${sugang.sugangname}" >
+    <p>
+
+    <label>교수명</label>
+    <input type="text" th:field="${sugang.sugangprofessor}">
+    <p>
+
+    <label>강의시간</label>
+    <input type="text" th:field ="${sugang.sugangtime}" >
+    <p>
+
+  <button type="submit">추가</button>
+</form>
+</body>
+</html>
