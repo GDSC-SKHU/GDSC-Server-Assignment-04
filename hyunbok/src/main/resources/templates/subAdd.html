@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <h1>subAdd.HTML</h1>
+    <style>
+        *{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h2>과목 추가</h2>
+
+<form action="subAdd" method="post" enctype="application/x-www-form-urlencoded">
+    <label>과목 코드</label>
+    <input type="text" th:field ="${subject.code}" >
+    <strong th:if= "${#fields.hasErrors('${subject.code}')}"  th:errors="${subject.code}" style="color: red">
+        fsdf</strong>
+    <p>
+    <label>과목명</label>
+    <input type="text" th:field="${subject.name}" >
+    <strong th:if= "${#fields.hasErrors('${subject.name}')}"  th:errors="${subject.name}" style="color: red">
+        fsdf</strong>
+    <p>
+    <label>과목명</label>
+    <input type="text" th:field="${subject.major}" >
+    <strong th:if= "${#fields.hasErrors('${subject.major}')}"  th:errors="${subject.major}" style="color: red">
+        fsdf</strong>
+    <p>
+  <button type="submit">추가하기</button>
+</form>
+</body>
+</html>

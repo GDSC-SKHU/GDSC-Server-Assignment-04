@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:value="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>home</title>
+  <h1>home.HTML</h1>
+  <style>
+    * {
+      text-align: center;
+    }
+    .subTable{
+      margin: auto;
+      border-collapse: collapse;
+    }
+    .subTable thead{
+      font-weight: bold;
+      color: white;
+      background: black;
+      font-size: large;
+    }
+    .subTable tbody tr:nth-child(odd) {
+      background-color: #f0f0f0;
+    }
+    .subTable tr,td{
+      padding: 2.5px 8px;
+      /*border: 1px solid #444444;*/
+    }
+  </style>
+  <script>
+    function getvalue(){
+      var query = document.getElementById('query').value;
+      return '/?'+query;
+    }
+  </script>
+
+</head>
+<body>
+<h2 th:if="${session.sessionUsername==null}">게스트 안녕</h2>
+<h2 th:if="${session.sessionUsername !=null}" th:text="|${session.sessionUsername} 안녕|"></h2>
+
+<div th:if="${session.sessionUsername==null}">
+<form action="signin" method="post" enctype="application/x-www-form-urlencoded">
+  <!-- th:field는 변수명으로 id, name ,value 설정-->
+  <label>ID</label>
+  <input type="text" th:field ="${member.username}" >
+  <p>
+    <label>PWD</label>
+    <input type="password" id="password" name="password" th:value="${member.password}">
+  <p>
+  <strong th:text="${error}" style="color: red">
+    tt</strong>
+
+  <button type="submit">로그인해</button>
+  <button><a href="signup">회원가입해</a></button>
+</form>
+</div>
+
+<div th:if="${session.sessionUsername!=null}">
+<form action="signout" method="post">
+  <button type="submit">로그아웃</button>
+</form>
+</div>
+
+<hr>
+<form>
+  <input type="text" name="query" id="query">
+  <input type="button" value="찾기" onclick="document.location.href=getvalue()"/>
+  <button><a href="subAdd">추가</a></button>
+</form>
+
+
+<br>
+
+<table class="subTable">
+  <thead>
+    <tr>
+      <td>
+        과목 코드
+      </td>
+
+      <td>
+        과목 이름
+      </td>
+
+      <td>
+        전공명
+      </td>
+
+      <td th:if="${session.sessionUsername!=null}">
+        삭제
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="subject : ${subjects}">
+      <td>
+        <strong th:text="${subject.code}">과목 코드</strong>
+      </td>
+      <td>
+        <strong th:text="${subject.name}">과목명</strong>
+      </td>
+      <td>
+        <strong th:text="${subject.major}">학과</strong>
+      </td>
+
+      <td th:if="${session.sessionUsername!=null}">
+        <form action="delete" method="post">
+          <input type="hidden" id="name" name="name"th:value="${subject.name}">
+          <button type="submit">삭제</button>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+</body>
+</html>
