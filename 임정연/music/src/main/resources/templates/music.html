@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+<div>
+  <div >
+    <h2>음악 목록</h2> </div>
+   <div>
+  <label for="title">제목</label>
+  <input type="text" id="title" name="title"
+         th:value="${music.title}" readonly> </div>
+  <div>
+    <label for="singer">가수명</label>
+    <input type="text" id="singer" name="singer"
+           th:value="${music.singer}" readonly>
+  </div>
+  <div >
+      <button
+              onclick="location.href='musics.html'"
+              th:onclick="|location.href='@{/musics}'|" type="button">목록으로</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

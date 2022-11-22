@@ -56,7 +56,7 @@ public class MusicController {
     @GetMapping("search/delete.{title}")
     public String deleteMusic(@PathVariable String title){
         musicService.delete(title);
-        return "redirect:/musics";
+        return "redirect:/music";
     }
 
 }

@@ -5,14 +5,13 @@
     <title>음악 검색하기</title>
 </head>
 <body>
-<h2>강의목록</h2>
-<div th:each="music : ${musics}">
+<h2>노래 검색</h2>
+<div th:each="music : ${music}">
     <strong th:text="${music.title}">제목</strong>
-    <strong th:text="${music.singer}">교수명</strong>
+    <strong th:text="${music.singer}">가수명</strong>
     <button onclick="location.href='search.html'"
             th:onclick="|location.href='@{/search/delete/{title}(title=${music.title})}'|" type="button">삭제</button>
 </div>
-<a href="/">홈</a>
 </body>
 <!--</form>>-->
 </html>

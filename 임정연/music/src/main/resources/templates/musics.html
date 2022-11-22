@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
 </head>
 <body>
-
+<div>
+    <div>
+        <h2>음악 목록</h2> </div>
+    <div>
+        <div>
+            <button
+                    onclick="location.href='addMusic.html'"
+                    th:onclick="|location.href='@{/addMusic}'|" type="button">상품 등록</button>
+        </div>
+    </div>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>제목</th>
+                    <th>가수명</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="music : ${musics}">
+                    <td><a href="item.html" th:href="@{/products/items/{itemId} (itemId=${item.id})}" th:text="${item.id}"></a></td>
+                    <td><a href="item.html" th:href="@{|/products/items/${item.id}|}" th:text="${item.itemName}"></a></td>
+                    <td th:text="${item.price}"></td>
+                    <td th:text="${item.quantity}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
 </body>
 </html>
